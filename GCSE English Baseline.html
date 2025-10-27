@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCSE English Language Baseline Assessment</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Montserrat font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Apply custom brand colors from your Brand_Sheet.pdf
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-deep-blue': '#005F8D',
+                        'brand-sky-blue': '#3FA9CE',
+                        'brand-warm-red': '#D84A39',
+                        'brand-sunny-yellow': '#E5AE29',
+                        'brand-bright-orange': '#F08C33',
+                        'brand-off-white': '#F9F7F4',
+                        'brand-charcoal': '#2E2E2E',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base font size */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 17px; 
+        }
+
+        /* --- Branded Input Styles --- */
+        .branded-input {
+            background-color: #F9F7F4;
+            border: none;
+            border-bottom: 2px solid #005F8D;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 10px 4px;
+            transition: all 0.2s ease-in-out;
+        }
+        .branded-input:focus {
+            outline: none;
+            border-bottom-color: #D84A39;
+            box-shadow: 0 1px 0 0 #D84A39;
+        }
+        
+        select.branded-select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20fill%3D%22none%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20stroke%3D%22%23005F8D%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%20d%3D%22M6%208l4%204%204-4%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+            background-color: #F9F7F4;
+            border: none;
+            border-bottom: 2px solid #005F8D;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 10px 4px;
+            padding-right: 2.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+        select.branded-select:focus {
+            outline: none;
+            border-bottom-color: #D84A39;
+            box-shadow: 0 1px 0 0 #D84A39;
+        }
+
+        /* --- Section Input Color Classes --- */
+        .input-details { border-bottom-color: #3FA9CE; }
+        .input-details:focus { border-bottom-color: #D84A39; box-shadow: 0 1px 0 0 #D84A39; }
+        .input-section-a { border-bottom-color: #D84A39; }
+        .input-section-a:focus { border-bottom-color: #D84A39; box-shadow: 0 1px 0 0 #D84A39; }
+        .input-section-b { border-bottom-color: #E5AE29; }
+        .input-section-b:focus { border-bottom-color: #D84A39; box-shadow: 0 1px 0 0 #D84A39; }
+        .input-section-c { border-bottom-color: #F08C33; }
+        .input-section-c:focus { border-bottom-color: #D84A39; box-shadow: 0 1px 0 0 #D84A39; }
+        
+        /* --- Branded Checkbox/Radio Styles --- */
+        .branded-checkbox, .branded-radio {
+            appearance: none;
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            min-width: 20px;
+            background-color: #F9F7F4;
+            border: 2px solid #005F8D;
+            border-radius: 0;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .branded-radio {
+            border-radius: 50%; /* Radios are round */
+        }
+        .branded-checkbox:checked, .branded-radio:checked {
+            background-color: #005F8D; /* brand-deep-blue */
+            border-color: #005F8D;
+        }
+        /* Checkmark for Checkbox */
+        .branded-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+        /* Dot for Radio */
+        .branded-radio:checked::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        /* --- Clickable Word Styles (Q12) --- */
+        .clickable-word-container {
+            background-color: #F9F7F4;
+            border: 2px solid #005F8D;
+            padding: 15px;
+            line-height: 2.5;
+            cursor: pointer;
+        }
+        .clickable-word {
+            display: inline-block;
+            padding: 2px 0;
+            transition: all 0.1s ease-in-out;
+            border-bottom: 2px solid transparent;
+            margin: 0 1px;
+        }
+        .clickable-word.selected {
+            background-color: #e5ae2940; /* Sunny Yellow, transparent */
+            border-bottom: 2px solid #D84A39; /* Warm Red */
+            border-radius: 0;
+        }
+        .clickable-word:hover {
+            background-color: #3fa9ce20; /* Sky Blue, transparent */
+        }
+
+        /* --- Drag and Drop Styles (Q15) --- */
+        .drag-list {
+            border: 2px solid #005F8D;
+            background-color: #F9F7F4;
+            padding: 10px;
+            user-select: none;
+        }
+        .drag-item {
+            background-color: #fff;
+            padding: 12px;
+            margin-bottom: 8px;
+            border: 2px solid #3FA9CE;
+            border-left-width: 6px;
+            cursor: grab;
+            transition: all 0.2s ease;
+        }
+        .drag-item:last-child {
+            margin-bottom: 0;
+        }
+        .drag-item.dragging {
+            opacity: 0.5;
+            background-color: #f0f0f0;
+            border-color: #D84A39;
+        }
+        .drag-over {
+            border-top: 2px dashed #D84A39;
+        }
+
+        /* --- Word Counter Styles --- */
+        .word-counter-pill {
+            display: inline-block;
+            background-color: #F9F7F4; /* brand-off-white */
+            color: #2E2E2E; /* brand-charcoal */
+            padding: 4px 10px; /* py-1 px-2.5 */
+            border-width: 2px;
+            border-style: solid;
+            border-color: #3FA9CE; /* Default: sky-blue (will be overridden) */
+            font-size: 0.875rem; /* 14px */
+            font-weight: 600;
+            border-radius: 0; /* Sharp corners */
+            min-width: 120px; /* Give it a consistent width */
+            text-align: center; /* Center the text inside */
+        }
+        .wc-pill-a { border-color: #D84A39; } /* brand-warm-red */
+        .wc-pill-b { border-color: #E5AE29; } /* brand-sunny-yellow */
+        .wc-pill-c { border-color: #F08C33; } /* brand-bright-orange */
+        .wc-pill-d { border-color: #005F8D; } /* brand-deep-blue */
+        
+        /* --- NEW Button Styles --- */
+        .btn {
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #005F8D; /* brand-deep-blue */
+            color: white;
+            border: 2px solid #005F8D;
+        }
+        .btn-primary:hover {
+            background-color: #004c71;
+            border-color: #004c71;
+        }
+        .btn-secondary {
+            background-color: #E5AE29; /* brand-sunny-yellow */
+            color: #2E2E2E; /* brand-charcoal */
+            border: 2px solid #E5AE29;
+        }
+        .btn-secondary:hover {
+            background-color: #d4a025;
+            border-color: #d4a025;
+        }
+        .btn-danger-outline {
+            background-color: transparent;
+            color: #D84A39; /* brand-warm-red */
+            border: 2px solid #D84A39;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+        }
+        .btn-danger-outline:hover {
+            background-color: #D84A39;
+            color: white;
+        }
+
+    </style>
+</head>
+<body class="bg-brand-off-white text-brand-charcoal font-sans antialiased">
+
+    <!-- Main container -->
+    <div class="container max-w-4xl mx-auto p-6 md:p-12 bg-white shadow-lg rounded-lg my-10 border border-gray-200 relative">
+
+        <!-- Header Section -->
+        <header class="mb-10 pb-6 border-b border-gray-200 relative z-10">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                <!-- The English Mentor Logo -->
+                <div class="flex flex-col items-center gap-0 mb-4 sm:mb-0">
+                    <p class="text-center text-4xl font-semibold text-brand-deep-blue mb-2">The English Mentor</p>
+                    <img src="https://raw.githubusercontent.com/TheMentorSphere/mentorsphere-branding/refs/heads/main/English%20logo%20%5Bno%20background%5D.png" alt="The English Mentor Logo" class="h-64 w-auto">
+                </div>
+                <!-- The MentorSphere Logo -->
+                <div class="text-right">
+                    <img src="https://raw.githubusercontent.com/TheMentorSphere/mentorsphere-branding/refs/heads/main/Main%20Logo%20with%20Orbits.png" alt="The MentorSphere Logo" class="h-60 w-auto">
+                </div>
+            </div>
+            <h2 class="text-4xl font-bold text-brand-deep-blue text-center mt-8">
+                GCSE English Language Baseline Assessment
+            </h2>
+        </header>
+
+        <!-- Content -->
+        <div class="relative z-10">
+            <!-- Use an ID for the form to easily grab all its data -->
+            <form id="assessmentForm">
+
+                <!-- Student Details Section -->
+                <section class="mb-12">
+                    <h3 class="text-2xl font-bold text-brand-deep-blue border-b-2 border-brand-sky-blue pb-2 mb-6">Student Details</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <label for="student_name" class="block text-lg font-semibold mb-2">Full Name</label>
+                            <input type="text" id="student_name" name="student_name" class="w-full branded-input input-details" placeholder="Enter your name...">
+                        </div>
+                        <div>
+                            <label for="student_date" class="block text-lg font-semibold mb-2">Date</label>
+                            <input type="date" id="student_date" name="student_date" class="w-full branded-input input-details" style="padding-top: 8px; padding-bottom: 8px;">
+                        </div>
+                        <div>
+                            <label for="student_confidence" class="block text-lg font-semibold mb-2">Confidence (0-10)</label>
+                            <p class="text-sm text-gray-500 -mt-2 mb-2">(0 = Not confident, 10 = Totally confident)</p>
+                            <select id="student_confidence" name="student_confidence" class="w-full branded-select input-details">
+                                <option value="">Select a rating...</option>
+                                <option value="0">0 (Not confident at all)</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5 (Feeling okay)</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10 (Totally confident!)</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Instructions Section -->
+                <section class="mb-12 space-y-6">
+                    <h3 class="text-2xl font-bold text-brand-deep-blue border-b-2 border-brand-sky-blue pb-2">Welcome to your Baseline Assessment</h3>
+                    
+                    <p class="text-lg">This assessment is designed to give me a clear idea of your current strengths and areas for development in GCSE English Language. This isn't a test—there's no pass or fail!</p>
+
+                    <ul class="list-disc list-inside space-y-2 text-base">
+                        <!-- UPDATED TIME ESTIMATE -->
+                        <li><strong>Duration:</strong> Approximately 2 - 2.5 hours (but take as much or as little time as you need).</li>
+                        <li><strong>Sections:</strong> There are four sections covering the key skills of the GCSE:
+                            <ul class="list-['-_'] list-inside ml-6">
+                                <li><strong>A:</strong> Fiction Reading Skills (Paper 1)</li>
+                                <li><strong>B:</strong> Non-Fiction Reading Skills (Paper 2)</li>
+                                <li><strong>C:</strong> Writing Skills (Paper 1 & 2)</li>
+                                <li><strong>D:</strong> Technical Accuracy (SPaG)</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- How to Approach -->
+                        <div class="bg-white p-4 rounded-lg border-2 border-brand-warm-red">
+                            <h4 class="text-lg font-bold text-brand-deep-blue mb-2">How to Approach This Assessment</h4>
+                            <p>The goal is simply to see what you already know and what we can work on together. Your answers will help me understand:</p>
+                            <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                <li>Which skills you're already confident with.</li>
+                                <li>Which topics might need more focus.</li>
+                                <li>How to best structure our sessions to help you succeed.</li>
+                            </ul>
+                        </div>
+
+                        <!-- What to Do -->
+                        <div class="bg-white p-4 rounded-lg border-2 border-brand-sunny-yellow">
+                            <h4 class="text-lg font-bold text-brand-deep-blue mb-2">What to Do</h4>
+                            <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                <li>Read every question carefully.</li>
+                                <li>Write your answers in the boxes provided.</li>
+                                <li>Don't worry if you get stuck—just leave it blank and move on.</li>
+                                <li>Please don't guess. It's more helpful for me to see what you don't know than to guess correctly by chance.</li>
+                                <li>Just try your best. That's all I ask!</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Contact/Issues Box -->
+                    <div class="bg-white p-4 rounded-lg border-2 border-brand-deep-blue mt-6">
+                        <h4 class="text-lg font-bold text-brand-deep-blue mb-2">Having Trouble?</h4>
+                        <p class="mb-2">If you have any issues with this document, need it in a different format, or would prefer to print it and fill it out by hand, please get in touch.</p>
+                        <p><strong>Email:</strong> <span class="text-brand-deep-blue font-semibold">luke@thementorsphere.co.uk</span></p>
+                    </div>
+                </section>
+
+                <div class="space-y-12">
+                    <!-- SECTION A: FICTION READING SKILLS (PAPER 1) -->
+                    <section>
+                        <h3 class="text-2xl font-bold text-brand-deep-blue border-b-2 border-brand-warm-red pb-2 mb-6">Section A: Fiction Reading Skills (Paper 1)</h3>
+                        
+                        <p class="mb-4">Read the following short extract from a novel and answer the questions that follow.</p>
+                        
+                        <!-- Extract 1 -->
+                        <div class="bg-gray-100 border-l-4 border-brand-warm-red p-6 rounded-lg text-gray-800 mb-8">
+                            <p class="mb-4">The rain hammered against the windowpane, a relentless drumbeat against the silence of the room. Eliza clutched the cold porcelain mug, her knuckles white. She hadn't moved in an hour. Outside, the wind howled, rattling the old sash window as if demanding to be let in. She was waiting for the sound of headlights, a crunch on the gravel drive. But there was nothing save the storm.</p>
+                            <p>At first, she had paced the length of the kitchen, her shadow stretching and shrinking under the single swaying bulb. She had rearranged the books on the shelf, twice. She had even, in a moment of desperation, started to polish the silver. But the restless energy had faded, replaced by this cold, heavy stillness. The clock on the wall ticked, each sound a small explosion in the quiet. The house felt like it was holding its breath. And she was holding hers with it.</p>
+                        </div>
+
+                        <!-- Question 1: CHANGED TO CHECKBOXES -->
+                        <div class="mb-8">
+                            <label for="q1" class="block text-lg font-semibold mb-2">1. List four things we learn about the room and the setting from the first paragraph.</label>
+                            <p class="text-base text-gray-600 mb-2">Select the four correct statements:</p>
+                            <div class="space-y-3">
+                                <label class="flex items-center text-lg">
+                                    <input type="checkbox" name="A1_Checkbox_1" value="rain" class="branded-checkbox">
+                                    <span>It is raining hard outside.</span>
+                                </label>
+                                <label class="flex items-center text-lg">
+                                    <input type="checkbox" name="A1_Checkbox_2" value="sunny" class="branded-checkbox">
+                                    <span>The sun is streaming into the room.</span>
+                                </label>
+                                <label class="flex items-center text-lg">
+                                    <input type="checkbox" name="A1_Checkbox_3" value="cold_mug" class="branded-checkbox">
+                                    <span>Eliza is holding a cold mug.</span>
+                                </label>
+                                <label class="flex items-center text-lg">
+                                    <input type="checkbox" name="A1_Checkbox_4" value="wind" class="branded-checkbox">
+                                    <span>The wind is rattling the window.</span>
+                                </label>
+                                <label class="flex items-center text-lg">
+                                    <input type="checkbox" name="A1_Checkbox_5" value="cars" class="branded-checkbox">
+                                    <span>There are many cars on the drive.</span>
+                                </label>
+                                <label class="flex items-center text-lg">
+                                    <input type="checkbox" name="A1_Checkbox_6" value="silent" class="branded-checkbox">
+                                    <span>The room is silent.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 (Unchanged) -->
+                        <div class="mb-8">
+                            <label for="q2" class="block text-lg font-semibold mb-2">2. How does the writer use language to describe the storm and the atmosphere in the room?</label>
+                            <p class="text-base text-gray-600 mb-2">You could include the writer's choice of words, phrases, and techniques. (Target: 150-200 words)</p>
+                            <textarea id="q2" name="A2_Language_Analysis" rows="23" class="w-full branded-input input-section-a" placeholder="Type your language analysis here..." data-word-count-id="wc-q2"></textarea>
+                            <div class="text-right mt-2">
+                                <span id="wc-q2" class="word-counter-pill wc-pill-a">Word Count: 0</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Question 3: REPLACED WITH CHECKBOXES -->
+                        <div class="mb-8">
+                            <label for="q3" class="block text-lg font-semibold mb-2">3. How has the writer structured this extract to build tension?</label>
+                            <p class="text-base text-gray-600 mb-2">Select all the structural choices the writer uses to achieve this:</p>
+                            <div class="space-y-3">
+                                <label class="flex items-center text-lg">
+                                    <input type="checkbox" name="A3_Structure_1" value="focus_shift_external_internal" class="branded-checkbox">
+                                    <span>Focusing on the storm *outside* before moving to Eliza *inside*.</span>
+                                </label>
+                                <label class="flex items-center text-lg">
+                                    <input type="checkbox" name="A3_Structure_2" value="flashback_happy" class="branded-checkbox">
+                                    <span>Describing a happy memory Eliza had earlier in the day.</span>
+                                </label>
+                                <label class="flex items-center text-lg">
+                                    <input type="checkbox" name="A3_Structure_3" value="shift_stillness_action" class="branded-checkbox">
+                                    <span>Shifting from Eliza's stillness to a list of her earlier, restless actions.</span>
+                                </label>
+                                <label class="flex items-center text-lg">
+                                    <input type="checkbox" name="A3_Structure_4" value="new_character" class="branded-checkbox">
+                                    <span>Introducing another character who speaks to Eliza.</span>
+                                </label>
+                                <label class="flex items-center text-lg">
+                                    <input type="checkbox" name="A3_Structure_5" value="focus_sound" class="branded-checkbox">
+                                    <span>Ending with a focus on a specific, small sound (the clock ticking).</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Question 4 (Unchanged) -->
+                        <div class="mb-8">
+                            <label for="q4" class="block text-lg font-semibold mb-2">4. A student said, "The writer makes Eliza seem completely isolated and alone." To what extent do you agree?</label>
+                            <p class="text-base text-gray-600 mb-2">In your response, you should: (Target: 200-250 words)
+                                <ul class="list-disc list-inside ml-4 text-base text-gray-600">
+                                    <li>Write a summary of your opinion.</li>
+                                    <li>Use evidence from the text to support your view.</li>
+                                    <li>Explain how the evidence supports your view.</li>
+                                </ul>
+                            </p>
+                            <textarea id="q4" name="A4_Evaluation_Isolated" rows="27" class="w-full branded-input input-section-a" placeholder="Type your evaluation here..." data-word-count-id="wc-q4"></textarea>
+                            <div class="text-right mt-2">
+                                <span id="wc-q4" class="word-counter-pill wc-pill-a">Word Count: 0</span>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- SECTION B: NON-FICTION READING SKILLS (PAPER 2) -->
+                    <section>
+                        <h3 class="text-2xl font-bold text-brand-deep-blue border-b-2 border-brand-sunny-yellow pb-2 mb-6">Section B: Non-Fiction Reading Skills (Paper 2)</h3>
+                        
+                        <p class="mb-4">Read the following two extracts about challenging journeys and answer the questions that follow.</p>
+                        
+                        <!-- Extract 2 -->
+                        <div class="bg-gray-100 border-l-4 border-brand-sunny-yellow p-6 rounded-lg text-gray-800 mb-6">
+                            <h4 class="font-bold text-brand-charcoal mb-2">Extract 2: From an explorer's journal, 1888.</h4>
+                            <p>The jungle was a wall of green, impenetrable and hostile. For weeks, we had hacked our way through this suffocating labyrinth, our spirits as damp as the clothes upon our backs. The air, thick with the smell of decay and the incessant drone of insects, offered no relief. It was a place that seemed actively to despise human presence, a verdant prison that tested the very limits of our endurance. Every step was a battle against sucking mud and tangled vines that tore at our skin like claws.</p>
+                        </div>
+
+                        <!-- Extract 3 -->
+                        <div class="bg-gray-100 border-l-4 border-brand-sunny-yellow p-6 rounded-lg text-gray-800 mb-8">
+                            <h4 class="font-bold text-brand-charcoal mb-2">Extract 3: From a modern travel blog, 2023.</h4>
+                            <p>The endless grey ribbon of the motorway stretched ahead, a monument to boredom. I'd been driving for six hours, fuelled by stale coffee and the monotonous thud of the radio. Every service station was a grim copy of the last: same plastic-wrapped sandwiches, same weary faces. This wasn't an adventure; it was an endurance test. The sat-nav, in its infuriatingly calm voice, announced '200 miles to your destination.' I gripped the wheel, my shoulders aching, and just focused on the white lines.</p>
+                        </div>
+
+                        <!-- Question 5 (Unchanged - already quick) -->
+                        <div class="mb-8">
+                            <label class="block text-lg font-semibold mb-2">5. Read Extract 2 again. Identify four statements below as TRUE or FALSE.</label>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-4">
+                                    <label for="q5a" class="flex-1">The journey has been going on for months.</label>
+                                    <select id="q5a" name="B5a_TrueFalse_Months" class="p-2 branded-select input-section-b">
+                                        <option value="">Select...</option>
+                                        <option value="true">True</option>
+                                        <option value="false">False</option>
+                                    </select>
+                                </div>
+                                <!-- ... other T/F questions ... -->
+                                <div class="flex items-center gap-4">
+                                    <label for="q5b" class="flex-1">The writer finds the jungle air refreshing.</label>
+                                    <select id="q5b" name="B5b_TrueFalse_Air" class="p-2 branded-select input-section-b">
+                                        <option value="">Select...</option>
+                                        <option value="true">True</option>
+                                        <option value="false">False</option>
+                                    </select>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <label for="q5c" class="flex-1">The writer feels the jungle is like a maze.</label>
+                                    <select id="q5c" name="B5c_TrueFalse_Maze" class="p-2 branded-select input-section-b">
+                                        <option value="">Select...</option>
+                                        <option value="true">True</option>
+                                        <option value="false">False</option>
+                                    </select>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <label for="q5d" class="flex-1">Walking through the jungle is physically difficult.</label>
+                                    <select id="q5d" name="B5d_TrueFalse_Difficult" class="p-2 branded-select input-section-b">
+                                        <option value="">Select...</option>
+                                        <option value="true">True</option>
+                                        <option value="false">False</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Question 6 (Unchanged - writing) -->
+                        <div class="mb-8">
+                            <label for="q6" class="block text-lg font-semibold mb-2">6. Summarise the differences in the *challenges* faced by the writers in Extract 2 and Extract 3.</label>
+                            <p class="text-base text-gray-600 mb-2">(Target: 80-100 words)</p>
+                            <textarea id="q6" name="B6_Summary_Challenges" rows="15" class="w-full branded-input input-section-b" placeholder="Type your summary here..." data-word-count-id="wc-q6"></textarea>
+                            <div class="text-right mt-2">
+                                <span id="wc-q6" class="word-counter-pill wc-pill-b">Word Count: 0</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Question 7 (Unchanged - writing) -->
+                        <div class="mb-8">
+                            <label for="q7" class="block text-lg font-semibold mb-2">7. How does the writer of Extract 2 use language to convey his negative experience?</label>
+                            <p class="text-base text-gray-600 mb-2">(Target: 150-200 words)</p>
+                            <textarea id="q7" name="B7_Language_Analysis_Extract2" rows="23" class="w-full branded-input input-section-b" placeholder="Type your language analysis here..." data-word-count-id="wc-q7"></textarea>
+                            <div class="text-right mt-2">
+                                <span id="wc-q7" class="word-counter-pill wc-pill-b">Word Count: 0</span>
+                            </div>
+                        </div>
+
+                        <!-- Question 8 (Unchanged - writing) -->
+                        <div class="mb-8">
+                            <label for="q8" class="block text-lg font-semibold mb-2">8. Compare how the two writers convey their different perspectives and feelings about their challenging journeys.</label>
+                            <p class="text-base text-gray-600 mb-2">In your answer, you should: (Target: 250-300 words)
+                                <ul class="list-disc list-inside ml-4 text-base text-gray-600">
+                                    <li>Compare their different feelings and perspectives.</li>
+                                    <li>Compare the methods they use to convey these feelings.</li>
+                                    <li>Support your ideas with evidence from both texts.</li>
+                                </ul>
+                            </p>
+                            <textarea id="q8" name="B8_Comparison_Perspectives" rows="31" class="w-full branded-input input-section-b" placeholder="Type your comparison here..." data-word-count-id="wc-q8"></textarea>
+                            <div class="text-right mt-2">
+                                <span id="wc-q8" class="word-counter-pill wc-pill-b">Word Count: 0</span>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <!-- SECTION C: WRITING SKILLS (Unchanged - writing) -->
+                    <section>
+                        <h3 class="text-2xl font-bold text-brand-deep-blue border-b-2 border-brand-bright-orange pb-2 mb-6">Section C: Writing Skills</h3>
+
+                        <!-- Question 9 -->
+                        <div class="mb-8">
+                            <label for="q9" class="block text-lg font-semibold mb-2">9. You are advised to spend about 45 minutes on this task.</label>
+                            <p class="text-lg mb-2">EITHER: Describe a place that feels unwelcoming. (Focus on sensory details to create an atmosphere).</p>
+                            <p class="text-lg mb-4">OR: Write a story with the title "The Escape".</p>
+                            <p class="text-base text-gray-600 mb-2">Your answer will be marked for content, organisation, and technical accuracy. (Target: 300-400 words)</p>
+                            <textarea id="q9" name="C9_Creative_Writing" rows="38" class="w-full branded-input input-section-c" placeholder="Type your descriptive or narrative writing here..." data-word-count-id="wc-q9"></textarea>
+                            <div class="text-right mt-2">
+                                <span id="wc-q9" class="word-counter-pill wc-pill-c">Word Count: 0</span>
+                            </div>
+                        </div>
+
+                        <!-- Question 10 -->
+                        <div class="mb-8">
+                            <label for="q10" class="block text-lg font-semibold mb-2">10. You are advised to spend about 45 minutes on this task.</label>
+                            <p class="text-lg mb-4">"All students should be required to do at least one hour of volunteering in their local community every week."</p>
+                            <p class="text-lg mb-4">Write an article for your school website arguing for OR against this statement.</p>
+                            <p class="text-base text-gray-600 mb-2">(Target: 300-400 words)</p>
+                            <textarea id="q10" name="C10_Argument_Writing" rows="38" class="w-full branded-input input-section-c" placeholder="Type your article here..." data-word-count-id="wc-q10"></textarea>
+                            <div class="text-right mt-2">
+                                <span id="wc-q10" class="word-counter-pill wc-pill-c">Word Count: 0</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- SECTION D: TECHNICAL ACCURACY (SPaG) - CHANGED QUESTIONS -->
+                    <section>
+                        <h3 class="text-2xl font-bold text-brand-deep-blue border-b-2 border-brand-deep-blue pb-2 mb-6">Section D: Technical Accuracy (SPaG)</h3>
+
+                        <!-- Question 11: CHANGED TO RADIO BUTTONS -->
+                        <div class="mb-8">
+                            <label class="block text-lg font-semibold mb-2">11. Identify the word class for each underlined word:</label>
+                            <p class="text-lg my-3">The <strong class="underline">quick</strong> brown fox jumped <strong class="underline">lazily</strong> over the <strong class="underline">sleeping</strong> dog.</p>
+                            <div class="grid sm:grid-cols-3 gap-6">
+                                <!-- Word 1: quick -->
+                                <div>
+                                    <p class="font-semibold mb-2">quick:</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center"><input type="radio" name="D11a_WordClass_Quick" value="noun" class="branded-radio"><span>Noun</span></label>
+                                        <label class="flex items-center"><input type="radio" name="D11a_WordClass_Quick" value="verb" class="branded-radio"><span>Verb</span></label>
+                                        <label class="flex items-center"><input type="radio" name="D11a_WordClass_Quick" value="adjective" class="branded-radio"><span>Adjective</span></label>
+                                        <label class="flex items-center"><input type="radio" name="D11a_WordClass_Quick" value="adverb" class="branded-radio"><span>Adverb</span></label>
+                                    </div>
+                                </div>
+                                <!-- Word 2: lazily -->
+                                <div>
+                                    <p class="font-semibold mb-2">lazily:</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center"><input type="radio" name="D11b_WordClass_Lazily" value="noun" class="branded-radio"><span>Noun</span></label>
+                                        <label class="flex items-center"><input type="radio" name="D11b_WordClass_Lazily" value="verb" class="branded-radio"><span>Verb</span></label>
+                                        <label class="flex items-center"><input type="radio" name="D11b_WordClass_Lazily" value="adjective" class="branded-radio"><span>Adjective</span></label>
+                                        <label class="flex items-center"><input type="radio" name="D11b_WordClass_Lazily" value="adverb" class="branded-radio"><span>Adverb</span></label>
+                                    </div>
+                                </div>
+                                <!-- Word 3: sleeping -->
+                                <div>
+                                    <p class="font-semibold mb-2">sleeping:</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center"><input type="radio" name="D11c_WordClass_Sleeping" value="noun" class="branded-radio"><span>Noun</span></label>
+                                        <label class="flex items-center"><input type="radio" name="D11c_WordClass_Sleeping" value="verb" class="branded-radio"><span>Verb</span></label>
+                                        <label class="flex items-center"><input type="radio" name="D11c_WordClass_Sleeping" value="adjective" class="branded-radio"><span>Adjective</span></label>
+                                        <label class="flex items-center"><input type="radio" name="D11c_WordClass_Sleeping" value="adverb" class="branded-radio"><span>Adverb</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 12: NEW INTERACTIVE HIGHLIGHTING TASK -->
+                        <div class="mb-8">
+                            <label for="q12_hidden_answer" class="block text-lg font-semibold mb-2">12. Click on every word that needs a capital letter or punctuation *after* it.</label>
+                            <p class="text-base text-gray-600 mb-2">Click on a word to select it (it will highlight). Click it again to deselect it.</p>
+                            <div id="punctuation-task" class="clickable-word-container">
+                                <!-- The sentence is broken into spans -->
+                                <span class="clickable-word" data-word="yesterday">yesterday</span>
+                                <span class="clickable-word" data-word="charles">charles</span>
+                                <span class="clickable-word" data-word="went">went</span>
+                                <span class="clickable-word" data-word="to">to</span>
+                                <span class="clickable-word" data-word="the">the</span>
+                                <span class="clickable-word" data-word="shop">shop</span>
+                                <span class="clickable-word" data-word="to">to</span>
+                                <span class="clickable-word" data-word="buy">buy</span>
+                                <span class="clickable-word" data-word="his">his</span>
+                                <span class="clickable-word" data-word="mothers">mothers</span>
+                                <span class="clickable-word" data-word="birthday">birthday</span>
+                                <span class="clickable-word" data-word="present">present</span>
+                                <span class="clickable-word" data-word="it">it</span>
+                                <span class="clickable-word" data-word="was">was</span>
+                                <span class="clickable-word" data-word="a">a</span>
+                                <span class="clickable-word" data-word="book">book</span>
+                                <span class="clickable-word" data-word="by">by</span>
+                                <span class="clickable-word" data-word="her">her</span>
+                                <span class="clickable-word" data-word="favourite">favourite</span>
+                                <span class="clickable-word" data-word="author">author</span>
+                            </div>
+                            <!-- Hidden input to store the selected words for submission -->
+                            <input type="hidden" id="q12_hidden_answer" name="D12_Punctuation_Errors">
+                        </div>
+                        
+                        <!-- Question 13: CHANGED TO DROPDOWNS -->
+                        <div class="mb-8">
+                            <label for="q13" class="block text-lg font-semibold mb-2">13. Identify the following sentences as simple, compound, or complex.</label>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                                    <p>The rain fell.</p>
+                                    <select name="D13a_SentenceType_Simple" class="w-full md:w-auto branded-select">
+                                        <option value="">Select type...</option>
+                                        <option value="simple">Simple</option>
+                                        <option value="compound">Compound</option>
+                                        <option value="complex">Complex</option>
+                                    </select>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                                    <p>The rain fell and the wind blew.</p>
+                                    <select name="D13b_SentenceType_Compound" class="w-full md:w-auto branded-select">
+                                        <option value="">Select type...</option>
+                                        <option value="simple">Simple</option>
+                                        <option value="compound">Compound</option>
+                                        <option value="complex">Complex</option>
+                                    </select>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                                    <p>Although the rain fell, the game continued.</p>
+                                    <select name="D13c_SentenceType_Complex" class="w-full md:w-auto branded-select">
+                                        <option value="">Select type...</option>
+                                        <option value="simple">Simple</option>
+                                        <option value="compound">Compound</option>
+                                        <option value="complex">Complex</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 14: CHANGED TO MATCHING DROPDOWNS -->
+                        <div class="mb-8">
+                            <label for="q14" class="block text-lg font-semibold mb-2">14. Match the word to its correct definition.</label>
+                            <div class="space-y-4 mt-4">
+                                <!-- Definition 1 -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center p-4 bg-gray-50 border border-gray-200">
+                                    <p class="font-semibold">Definition: To suggest or hint at something without stating it directly.</p>
+                                    <select name="D14a_Matching_Imply" class="w-full md:w-auto branded-select">
+                                        <option value="">Select word...</option>
+                                        <option value="imply">Imply</option>
+                                        <option value="infer">Infer</option>
+                                    </select>
+                                </div>
+                                <!-- Definition 2 -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center p-4 bg-gray-50 border border-gray-200">
+                                    <p class="font-semibold">Definition: To deduce or conclude something from evidence and reasoning.</p>
+                                    <select name="D14b_Matching_Infer" class="w-full md:w-auto branded-select">
+                                        <option value="">Select word...</option>
+                                        <option value="imply">Imply</option>
+                                        <option value="infer">Infer</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 15: NEW DRAG-AND-DROP TASK -->
+                        <div class="mb-8">
+                            <label for="q15_hidden_answer" class="block text-lg font-semibold mb-2">15. Put the following sentences in the correct order to form a coherent paragraph.</label>
+                            <p class="text-base text-gray-600 mb-2">Click and drag the sentences into the right sequence.</p>
+                            <div id="drag-container" class="drag-list">
+                                <div class="drag-item" data-id="1" draggable="true">A: Finally, he was able to relax.</div>
+                                <div class="drag-item" data-id="2" draggable="true">B: He checked his watch and realised he was late.</div>
+                                <div class="drag-item" data-id="3" draggable="true">C: John woke up with a start.</div>
+                                <div class="drag-item" data-id="4" draggable="true">D: After running all the way, he just managed to catch the bus.</div>
+                                <div class="drag-item" data-id="5" draggable="true">E: Because of this, he leaped out of bed and threw on his clothes.</div>
+                            </div>
+                            <input type="hidden" id="q15_hidden_answer" name="D15_Sentence_Order">
+                        </div>
+
+
+                    </section>
+
+                    <!-- NEW: Submit / Save Instructions -->
+                    <div class="text-center pt-6 border-t border-gray-200">
+                        <div class="bg-white p-6 rounded-lg border-2 border-brand-deep-blue">
+                            <h4 class="text-xl font-bold text-brand-deep-blue mb-4">Assessment Complete!</h4>
+                            
+                            <p class="text-lg font-semibold mb-2">How to Submit Your Assessment:</p>
+                            <p class="text-base mb-6">Click the button below to open your print dialog. Change the 'Destination' to <strong>'Save as PDF'</strong>, then email that file to <strong class="text-brand-deep-blue">luke@thementorsphere.co.uk</strong></p>
+
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                <!-- Save Progress Button -->
+                                <button type="button" id="saveProgressBtn" class="btn btn-secondary">
+                                    Save Progress
+                                </button>
+                                
+                                <!-- Print/Submit Button -->
+                                <button type="button" id="printPdfBtn" class="btn btn-primary">
+                                    Save as PDF & Submit
+                                </button>
+                            </div>
+                            
+                            <div class="mt-6 text-center">
+                                <div id="save-status" class="text-base text-brand-deep-blue font-semibold mb-4"></div>
+                                <p class="text-sm text-gray-600 mb-4">
+                                    <strong>Note on Saving:</strong> "Save Progress" saves your work to this browser. You can safely close this tab and your answers will reload when you return. This will NOT work if you switch computers or browsers.
+                                </p>
+                                <button type="button" id="clearProgressBtn" class="btn btn-danger-outline">
+                                    Clear Progress & Start Over
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div><!-- /end main container -->
+
+    <!-- Footer -->
+    <footer class="text-center py-6">
+        <p class="text-sm text-gray-500">The MentorSphere - The English Mentor - GCSE English Language Baseline Assessment</p>
+    </footer>
+
+    <!-- JavaScript for Word Counters and NEW Interactive Questions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const form = document.getElementById('assessmentForm');
+            const saveBtn = document.getElementById('saveProgressBtn');
+            const printBtn = document.getElementById('printPdfBtn');
+            const clearBtn = document.getElementById('clearProgressBtn');
+            const saveStatus = document.getElementById('save-status');
+            const storageKey = 'englishBaselineProgress';
+
+            // --- 1. Word Counter Script ---
+            const textareas = document.querySelectorAll('textarea[data-word-count-id]');
+            textareas.forEach(textarea => {
+                const countId = textarea.getAttribute('data-word-count-id');
+                const counterElement = document.getElementById(countId);
+                
+                if (counterElement) {
+                    const updateWordCount = () => {
+                        const text = textarea.value.trim();
+                        let wordCount = 0;
+                        if (text) {
+                            wordCount = text.split(/\s+/).filter(Boolean).length;
+                        }
+                        counterElement.textContent = `Word Count: ${wordCount}`;
+                    };
+                    // Immediately update count on load (in case of saved data)
+                    // We'll call this from loadProgress()
+                    textarea.addEventListener('input', updateWordCount);
+                }
+            });
+
+            // --- 2. Q12 Clickable Punctuation Script ---
+            const punctuationTask = document.getElementById('punctuation-task');
+            const hiddenPunctuationInput = document.getElementById('q12_hidden_answer');
+            const selectedWords = new Set();
+
+            if (punctuationTask && hiddenPunctuationInput) {
+                punctuationTask.addEventListener('click', (e) => {
+                    const target = e.target;
+                    if (target.classList.contains('clickable-word')) {
+                        const word = target.getAttribute('data-word');
+                        target.classList.toggle('selected');
+                        
+                        if (target.classList.contains('selected')) {
+                            selectedWords.add(word);
+                        } else {
+                            selectedWords.delete(word);
+                        }
+                        hiddenPunctuationInput.value = Array.from(selectedWords).join(', ');
+                    }
+                });
+            }
+
+            // --- 3. Q15 Drag and Drop Script ---
+            const dragContainer = document.getElementById('drag-container');
+            const hiddenOrderInput = document.getElementById('q15_hidden_answer');
+            let draggingItem = null;
+
+            if (dragContainer && hiddenOrderInput) {
+                const updateOrderInput = () => {
+                    const items = [...dragContainer.querySelectorAll('.drag-item')];
+                    const order = items.map(item => item.getAttribute('data-id'));
+                    hiddenOrderInput.value = order.join(', ');
+                };
+                
+                dragContainer.addEventListener('dragstart', (e) => {
+                    if (e.target.classList.contains('drag-item')) {
+                        draggingItem = e.target;
+                        setTimeout(() => draggingItem.classList.add('dragging'), 0);
+                    }
+                });
+
+                dragContainer.addEventListener('dragend', () => {
+                    if (draggingItem) {
+                        draggingItem.classList.remove('dragging');
+                        draggingItem = null;
+                        updateOrderInput();
+                    }
+                });
+
+                dragContainer.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    const afterElement = getDragAfterElement(dragContainer, e.clientY);
+                    [...dragContainer.querySelectorAll('.drag-over')].forEach(el => el.classList.remove('drag-over'));
+                    if (draggingItem) {
+                        if (afterElement == null) {
+                            dragContainer.appendChild(draggingItem);
+                        } else {
+                            dragContainer.insertBefore(draggingItem, afterElement);
+                            afterElement.classList.add('drag-over');
+                        }
+                    }
+                });
+                
+                dragContainer.addEventListener('drop', () => {
+                     [...dragContainer.querySelectorAll('.drag-over')].forEach(el => el.classList.remove('drag-over'));
+                });
+
+                const getDragAfterElement = (container, y) => {
+                    const draggableElements = [...container.querySelectorAll('.drag-item:not(.dragging)')];
+                    return draggableElements.reduce((closest, child) => {
+                        const box = child.getBoundingClientRect();
+                        const offset = y - box.top - box.height / 2;
+                        if (offset < 0 && offset > closest.offset) {
+                            return { offset: offset, element: child };
+                        } else {
+                            return closest;
+                        }
+                    }, { offset: Number.NEGATIVE_INFINITY }).element;
+                };
+
+                // Initial setup for hidden input
+                updateOrderInput();
+            }
+
+            // --- 4. Save/Load/Clear Progress Functions ---
+
+            // SAVE PROGRESS
+            const saveProgress = () => {
+                const formData = new FormData(form);
+                const data = {};
+                // Manually include checkbox values
+                form.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                    data[cb.name] = cb.checked;
+                });
+                // Manually include radio button values
+                form.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    if (radio.checked) {
+                        data[radio.name] = radio.value;
+                    }
+                });
+                // Get values from textareas, inputs, selects
+                form.querySelectorAll('textarea, input[type="text"], input[type="date"], input[type="hidden"], select').forEach(el => {
+                     if (el.name) {
+                        data[el.name] = el.value;
+                    }
+                });
+
+                try {
+                    localStorage.setItem(storageKey, JSON.stringify(data));
+                    if (saveStatus) {
+                        saveStatus.textContent = `Progress saved! (Last saved: ${new Date().toLocaleTimeString()})`;
+                        saveStatus.style.color = '#005F8D';
+                    }
+                } catch (e) {
+                    console.error("Error saving to localStorage", e);
+                    if (saveStatus) {
+                        saveStatus.textContent = "Error saving progress. Your browser storage might be full.";
+                        saveStatus.style.color = '#D84A39';
+                    }
+                }
+            };
+
+            // LOAD PROGRESS
+            const loadProgress = () => {
+                const savedData = localStorage.getItem(storageKey);
+                if (!savedData) {
+                    // No saved data, just update word counts to 0
+                    textareas.forEach(textarea => textarea.dispatchEvent(new Event('input')));
+                    return;
+                }
+                
+                try {
+                    const data = JSON.parse(savedData);
+                    
+                    // Restore values for inputs, textareas, selects
+                    form.querySelectorAll('textarea, input[type="text"], input[type="date"], input[type="hidden"], select').forEach(el => {
+                        if (el.name && data[el.name] !== undefined) {
+                            el.value = data[el.name];
+                        }
+                    });
+                    
+                    // Restore checkboxes
+                    form.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                        if (data[cb.name] !== undefined) {
+                            cb.checked = data[cb.name];
+                        }
+                    });
+                    
+                    // Restore radio buttons
+                    form.querySelectorAll('input[type="radio"]').forEach(radio => {
+                         if (data[radio.name] === radio.value) {
+                            radio.checked = true;
+                        }
+                    });
+
+                    // --- Special Loaders for Interactive Questions ---
+
+                    // Q12: Reload Punctuation Highlights
+                    if (hiddenPunctuationInput && data[hiddenPunctuationInput.name]) {
+                        const savedWords = data[hiddenPunctuationInput.name].split(', ').filter(Boolean);
+                        selectedWords.clear();
+                        document.querySelectorAll('.clickable-word').forEach(span => {
+                            const word = span.getAttribute('data-word');
+                            if (savedWords.includes(word)) {
+                                span.classList.add('selected');
+                                selectedWords.add(word);
+                            } else {
+                                span.classList.remove('selected');
+                            }
+                        });
+                    }
+
+                    // Q15: Reload Drag-and-Drop Order
+                    if (hiddenOrderInput && data[hiddenOrderInput.name]) {
+                        const savedOrder = data[hiddenOrderInput.name].split(', ').filter(Boolean);
+                        if (savedOrder.length > 0) {
+                            const itemsMap = new Map();
+                            dragContainer.querySelectorAll('.drag-item').forEach(item => {
+                                itemsMap.set(item.getAttribute('data-id'), item);
+                            });
+                            
+                            // Re-append items in the saved order
+                            savedOrder.forEach(id => {
+                                const item = itemsMap.get(id);
+                                if (item) {
+                                    dragContainer.appendChild(item);
+                                }
+                            });
+                        }
+                    }
+                    
+                    // Update all word counters
+                    textareas.forEach(textarea => textarea.dispatchEvent(new Event('input')));
+
+                    if (saveStatus) {
+                        saveStatus.textContent = "Previously saved progress has been loaded.";
+                        saveStatus.style.color = 'green';
+                    }
+
+                } catch (e) {
+                    console.error("Error loading from localStorage", e);
+                }
+            };
+            
+            // CLEAR PROGRESS
+            const clearProgress = () => {
+                // Use a simple confirmation dialog (not alert)
+                if (confirm("Are you sure you want to clear all your saved progress? This cannot be undone.")) {
+                    localStorage.removeItem(storageKey);
+                    form.reset(); // Reset all form fields
+                    
+                    // Manually clear interactive elements
+                    document.querySelectorAll('.clickable-word.selected').forEach(span => span.classList.remove('selected'));
+                    selectedWords.clear();
+                    if(hiddenPunctuationInput) hiddenPunctuationInput.value = '';
+
+                    // Reset drag-and-drop (can't easily reset to original, so just clearing input is fine, loading will fail)
+                    // A full reset would require knowing the original order, "3,2,5,4,1" is not it.
+                    // For now, just reset the form, which will clear the hidden input.
+                    // On reload, it will just show the default order.
+                    
+                    // Update all word counters
+                    textareas.forEach(textarea => textarea.dispatchEvent(new Event('input')));
+
+                    if (saveStatus) {
+                        saveStatus.textContent = "Progress cleared. The page will now reload.";
+                        saveStatus.style.color = '#D84A39';
+                    }
+                    // Reload to ensure a clean state for drag-and-drop, etc.
+                    setTimeout(() => window.location.reload(), 1500);
+                }
+            };
+
+            // --- 5. Add Event Listeners ---
+            if (saveBtn) saveBtn.addEventListener('click', saveProgress);
+            if (printBtn) printBtn.addEventListener('click', () => window.print());
+            if (clearBtn) clearBtn.addEventListener('click', clearProgress);
+
+            // --- 6. Load progress on page load ---
+            loadProgress();
+
+        });
+    </script>
+
+</body>
+</html>
+
