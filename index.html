@@ -51,9 +51,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2rem 1rem;
+            padding: 54px 1rem 94px 1rem; /* UPDATED: 30px bar + 24px pad, 70px bar + 24px pad */
             overflow-y: auto; /* Allow individual slides to scroll if content is tall */
             background-color: #F9F7F4; /* brand-off-white */
+            box-sizing: border-box; /* NEW: Ensure padding is included in height */
         }
         .slide.active-slide {
             display: flex; /* Show the active slide */
@@ -61,42 +62,15 @@
         .slide-content {
             width: 100%;
             max-width: 56rem; /* max-w-5xl */
-            margin: auto 0;
+            margin: 0 auto; /* UPDATED: Was auto 0 */
             background-color: white;
             padding: 2rem 3rem;
             border-radius: 0.5rem;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            max-height: calc(100vh - 120px); /* Full height minus nav/progress bar */
+            max-height: 100%; /* UPDATED: Was calc(100vh - 120px) */
             overflow-y: auto;
         }
-
-        /* --- Navigation Bar --- */
-        .navigation-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 70px;
-            background-color: white;
-            border-top: 1px solid #e5e7eb;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-            z-index: 50;
-        }
-        .nav-button {
-            padding: 0.5rem 1.5rem;
-            font-weight: 600;
-            border-radius: 0.25rem;
-            transition: all 0.2s ease;
-            border: 2px solid transparent;
-        }
-        .nav-button:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-        
+ 
         /* --- Progress Bar --- */
         .progress-bar-container {
             position: fixed;
@@ -171,7 +145,36 @@
         .body-modal-open {
             overflow: hidden; /* Prevent body scroll when modal is open */
         }
-
+        
+        /* --- NEW: Re-added Navigation Bar Styles --- */
+        .navigation-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            z-index: 50;
+        }
+        .nav-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        /* --- End of Re-added Styles --- */
 
         /* --- Branded Input Styles --- */
         .branded-input {
@@ -548,7 +551,8 @@
                 <div class="space-y-3">
                     <label class="flex items-center text-lg p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
                         <input type="checkbox" name="A3_Structure" value="focus_shift_external_internal" class="branded-checkbox savable">
-                        <span>Focusing on the storm *outside* before moving to Eliza *inside*.</span>
+                        <!-- FIXED: Removed asterisks -->
+                        <span>Focusing on the storm outside before moving to Eliza inside.</span>
                     </label>
                     <label class="flex items-center text-lg p-3 border border-gray-200 rounded-lg hover:bg-gray-50">
                         <input type="checkbox" name="A3_Structure" value="flashback_happy" class="branded-checkbox savable">
@@ -697,7 +701,8 @@
                 <div class="flex justify-between items-center mb-4">
                     <div>
                         <label for="q6" class="block text-xl font-semibold mb-2 text-brand-deep-blue">Section B: Question 6</label>
-                        <p class="text-lg mb-2">Summarise the differences in the *challenges* faced by the writers in Extract 2 and Extract 3.</p>
+                        <!-- FIXED: Removed asterisks -->
+                        <p class="text-lg mb-2">Summarise the differences in the challenges faced by the writers in Extract 2 and Extract 3.</p>
                     </div>
                     <!-- NEW: View Extract Button -->
                     <button type="button" class="view-extract-btn nav-button bg-brand-sunny-yellow text-white hover:bg-opacity-80 flex-shrink-0" data-modal-id="extract-2-3-modal">View Extracts</button>
@@ -1377,6 +1382,10 @@
 
 </body>
 </html>
+
+
+
+
 
 
 
